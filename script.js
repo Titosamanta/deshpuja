@@ -11,13 +11,19 @@ function loadData() {
 
       rows.forEach(row => {
         const cells = row.split(',');
-        const [id, name, email] = cells;
+        const [id, name, money] = cells;
 
         const tr = document.createElement('tr');
         tr.innerHTML = `
+		if (${money} >0) {
+			<td style="color: green;">${id}</td>
+		} else {
+			<td>${id}</td>
+			}
           <td>${id}</td>
           <td>${name}</td>
-          <td>${email}</td>
+          <td>${money}</td>
+		  
         `;
         tableBody.appendChild(tr);
       });
