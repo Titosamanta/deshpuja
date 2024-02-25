@@ -15,16 +15,19 @@ function loadData() {
 
         const tr = document.createElement('tr');
         tr.innerHTML = `
-		if (${money} >0) {
-			<td style="color: green;">${id}</td>
-		} else {
-			<td>${id}</td>
-			}
           <td>${id}</td>
           <td>${name}</td>
           <td>${money}</td>
 		  
         `;
+	if (${money} >0) {
+	   <style>
+        td {
+            color: green;
+        	}
+		</style> 
+			
+	}       
         tableBody.appendChild(tr);
       });
     })
