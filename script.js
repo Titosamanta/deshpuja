@@ -19,8 +19,7 @@ function loadData() {
           <td>${name}</td>
           <td>${money}</td>
 		  
-        `;		
-	}       
+        `;
         tableBody.appendChild(tr);
       });
     })
