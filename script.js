@@ -19,14 +19,7 @@ function loadData() {
           <td>${name}</td>
           <td>${money}</td>
 		  
-        `;
-	if (${money} >0) {
-	   <style>
-        td {
-            color: green;
-        	}
-		</style> 
-			
+        `;		
 	}       
         tableBody.appendChild(tr);
       });
