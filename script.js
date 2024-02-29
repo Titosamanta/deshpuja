@@ -14,7 +14,7 @@ function loadData() {
         const [id, name, money] = cells;
 
         const tr = document.createElement('tr');
-	tr.className = ${money} === 0 ? 'row-even' : 'row-odd';
+	tr.className = money === 0 ? 'row-even' : 'row-odd';
         tr.innerHTML = `
           <td>${id}</td>
           <td>${name}</td>
