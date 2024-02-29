@@ -1,33 +1,51 @@
-// Function to load data from a CSV file into the table
-function loadData() {
-  fetch('data.csv')
-    .then(response => response.text())
-    .then(data => {
-      const rows = data.split('\n').slice(1); // Split by newline and skip header row
-      const tableBody = document.querySelector('#dataTable tbody');
+// Function to fetch CSV data and create table
+async function fetchCSVData(url) {
+  try {
+    const response = await fetch(url);
+    const data = await response.text();
+    const rows = data.split('\n');
+    const tableBody = document.querySelector('#dataTable tbody');
 
-      // Clear previous table content
-      tableBody.innerHTML = '';
+    rows.forEach((row, index) => {
+      // Skip header row
+      if (index === 0) return;
 
-      rows.forEach(row => {
-        const cells = row.split(',');
-        const [id, name, money] = cells;
+      const columns = row.split(',');
+      const id = columns[0].trim();
+      const name = columns[1].trim();
+      const fees = parseFloat(columns[2].trim());
+      const rowElement = document.createElement('tr');
 
-        const tr = document.createElement('tr');
-	tr.className = money === 0 ? 'row-even' : 'row-odd';
-        tr.innerHTML = `
-          <td>${id}</td>
-          <td>${name}</td>
-          <td>${money}</td>
-		  
-        `;
-        tableBody.appendChild(tr);
-      });
-    })
-    .catch(error => console.error('Error fetching data:', error));
+      // Apply different row color based on fees
+      if (!isNaN(fees) && fees > 0) {
+        if (fees > zeno) {
+          rowElement.className = 'row-green';
+        } else {
+          rowElement.className = 'row-red';
+        }
+      }
+
+      const idCell = document.createElement('td');
+      idCell.textContent = id;
+      rowElement.appendChild(idCell);
+
+      const nameCell = document.createElement('td');
+      nameCell.textContent = name;
+      rowElement.appendChild(nameCell);
+
+      const feesCell = document.createElement('td');
+      feesCell.textContent = fees;
+      rowElement.appendChild(feesCell);
+
+      tableBody.appendChild(rowElement);
+    });
+  } catch (error) {
+    console.error('Error fetching CSV data:', error);
+  }
 }
 
-// Load data when the page loads
-window.addEventListener('DOMContentLoaded', () => {
-  loadData();
-});
+// Call the function with the path to your CSV file
+fetchCSVData('data.csv');
+
+// Zeno value for comparison
+const zeno = 100; // Change this value as needed
