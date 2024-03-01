@@ -21,7 +21,7 @@ async function fetchCSVData(url) {
         if (fees > zeno) {
           rowElement.className = 'row-green';
         } else {
-          rowElement.className = 'row-red';
+          rowElement.className ='row-red';
         }
       }
 
@@ -48,4 +48,4 @@ async function fetchCSVData(url) {
 fetchCSVData('data.csv');
 
 // Zeno value for comparison
-const zeno = 100; // Change this value as needed
+const zeno = 0; // Change this value as needed
