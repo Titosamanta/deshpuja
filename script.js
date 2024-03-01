@@ -17,7 +17,7 @@ async function fetchCSVData(url) {
       const rowElement = document.createElement('tr');
 
       // Apply different row color based on fees
-      if (!isNaN(fees) && fees > 0) {
+      if (!isNaN(fees) && fees >= 0) {
         if (fees > zeno) {
           rowElement.className = 'row-green';
         } else {
