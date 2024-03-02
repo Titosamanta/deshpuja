@@ -35,9 +35,17 @@ async function fetchCSVData(url) {
       nameCell.textContent = name;
       rowElement.appendChild(nameCell);
 
+      const addressCell = document.createElement('td');
+      addressCell.textContent = address;
+      rowElement.appendChild(addressCell);
+
       const feesCell = document.createElement('td');
       feesCell.textContent = fees;
       rowElement.appendChild(feesCell);
+
+      const doneCell = document.createElement('td');
+      doneCell.textContent = done;
+      rowElement.appendChild(doneCell);
 
       tableBody.appendChild(rowElement);
     });
