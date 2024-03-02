@@ -15,7 +15,7 @@ async function fetchCSVData(url) {
       const name = columns[1].trim();
 	  const address = columns[2].trim();
       const fees = columns[3].trim();
-	  const done = columns[4].trim();
+	  const done = columns[4];
       const rowElement = document.createElement('tr');
 
       // Apply different row color based on fees
