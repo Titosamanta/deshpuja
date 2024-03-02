@@ -13,17 +13,19 @@ async function fetchCSVData(url) {
       const columns = row.split(',');
       const id = columns[0].trim();
       const name = columns[1].trim();
-      const fees = parseFloat(columns[2].trim());
+	  const address = columns[2].trim();
+      const fees = columns[3].trim();
+	  const done = columns[4].trim();
       const rowElement = document.createElement('tr');
 
       // Apply different row color based on fees
-      if (!isNaN(fees) && fees > 0) {
-        if (fees > zeno) {
+      //if (!isNaN(fees) && fees > 0) {
+        if (done === "Paid") {
           rowElement.className = 'row-green';
         } else {
           rowElement.className = 'row-red';
         }
-      }
+      //}
 
       const idCell = document.createElement('td');
       idCell.textContent = id;
@@ -45,7 +47,7 @@ async function fetchCSVData(url) {
 }
 
 // Call the function with the path to your CSV file
-fetchCSVData('data.csv');
+fetchCSVData('mandircommittee.csv');
 
 // Zeno value for comparison
 const zeno = 100; // Change this value as needed
