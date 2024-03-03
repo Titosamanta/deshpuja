@@ -45,7 +45,7 @@ async function fetchCSVData(url) {
 }
 
 // Call the function with the path to your CSV file
-fetchCSVData('data/data.csv');
+fetchCSVData('data.csv');
 
 // Zeno value for comparison
 const zeno = 100; // Change this value as needed
