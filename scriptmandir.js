@@ -20,7 +20,7 @@ async function fetchCSVData(url) {
 
       // Apply different row color based on fees
       //if (!isNaN(fees) && fees > 0) {
-        if (done === "Paid") {
+        if (done = "Paid") {
           rowElement.className = 'row-green';
         } else {
           rowElement.className = 'row-red';
